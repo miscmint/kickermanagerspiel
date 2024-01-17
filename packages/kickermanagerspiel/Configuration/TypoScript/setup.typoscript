@@ -1,0 +1,28 @@
+page = PAGE
+page.typeNum = 0
+page.10 = FLUIDTEMPLATE
+page.10 {
+    format = html
+    file = EXT:kickermanagerspiel/Resources/Private/Templates/Default.html
+    layoutRootPaths {
+        10 = EXT:kickermanagerspiel/Resources/Private/Layouts/
+    }
+    partialRootPaths {
+        10 = EXT:kickermanagerspiel/Resources/Private/Partials/
+    }
+    templateRootPaths {
+        10 = EXT:kickermanagerspiel/Resources/Private/Templates/
+    }
+}
+page.includeCSS {
+    main = EXT:kickermanagerspiel/Resources/Public/Css/main.css
+}
+page.headerData {
+    10 = TEXT
+    10.value = <meta name="viewport" content="width=device-width, initial-scale=1.0">
+}
+config {
+    language = de
+    spamProtectEmailAddresses = -2
+    spamProtectEmailAddresses_atSubst = <span style="display:none;">dontospamme</span>@<wbr><span style="display:none;">gowaway.</span>
+}

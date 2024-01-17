@@ -1,0 +1,68 @@
+.formation-532 {
+  &:before {
+    content: '5-3-2';
+  }
+  .midfielder {
+    left: 883px;
+  }
+
+  .goalkeeper-1 {
+    top: 99px;
+    left: -130px;
+  }
+  .defender-1 {
+    top: -32px;
+    left: -76px;
+  }
+  .defender-2 {
+    top: 99px;
+    left: -130px;
+  }
+  .defender-3 {
+    top: 234px;
+    left: -186px;
+  }
+  .defender-4 {
+    top: 34px;
+    left: 122px;
+  }
+  .defender-5 {
+    top: 168px;
+    left: 66px;
+  }
+  .midfielder-1 {
+    top: -32px;
+    left: -76px;
+  }
+  .midfielder-2 {
+    top: 99px;
+    left: -130px;
+  }
+  .midfielder-3 {
+    top: 234px;
+    left: -186px;
+  }
+  .forward-1 {
+    top: 34px;
+    left: -103px;
+  }
+  .forward-2 {
+    top: 168px;
+    left: -158px;
+  }
+  .midfielder-4, .midfielder-5, .forward-3 {
+    display: none;
+  }
+}
+
+.bench-532 {
+  .defender-6 {
+    @include firstDefenderOnBench;
+  }
+  .midfielder-4 {
+    @include firstMidfielderOnBench;
+  }
+  .forward-3 {
+    @include firstForwardOnBench;
+  }
+}

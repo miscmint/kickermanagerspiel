@@ -1,0 +1,171 @@
+#formation {
+  &:before {
+    font-size: 150%;
+    line-height: 1.8;
+  }
+  @media screen and (max-width: $media-tablet - 1) {
+    background: var(--primary-color);
+    border: 4px solid #fff;
+    padding: 0 10px;
+    &.no-success {
+      display: none;
+    }
+    &:before {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      line-height: 1;
+      padding: 4px 6px 0 6px;
+    }
+    > div {
+      margin-top: 40px;
+      position: relative;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .goalkeeper {
+      &:before {
+        content: 'Tor';
+        color: var(--primary-font-color);
+        position: absolute;
+        top: -30px;
+        left: 0;
+      }
+    }
+    .defender {
+      &:before {
+        content: 'Abwehr';
+        color: var(--primary-font-color);
+        position: absolute;
+        top: -30px;
+        left: 0;
+      }
+    }
+    .midfielder {
+      &:before {
+        content: 'Mittelfeld';
+        color: var(--primary-font-color);
+        position: absolute;
+        top: -30px;
+        left: 0;
+      }
+    }
+    .forward {
+      &:before {
+        content: 'Sturm';
+        color: var(--primary-font-color);
+        position: absolute;
+        top: -30px;
+        left: 0;
+      }
+    }
+  }
+  @media screen and (min-width: $media-tablet) {
+    position: absolute;
+    z-index: 1;
+    &:before {
+      margin-left: 90px;
+    }
+    .goalkeeper {
+      position: absolute;
+      top: 0;
+      left: 83px;
+    }
+    .defender {
+      position: absolute;
+      top: 0;
+      left: 350px;
+    }
+    .midfielder {
+      position: absolute;
+      top: 0;
+    }
+    .forward {
+      position: absolute;
+      top: 0;
+      left: 1130px;
+    }
+  }
+}
+
+#bench {
+  .goalkeeper-2 {
+    @media screen and (min-width: $media-tablet) {
+      margin-left: 20px;
+    }
+    &:before {
+      content: 'Tor';
+      color: var(--primary-font-color);
+      position: absolute;
+      top: -30px;
+      left: 0;
+      @media screen and (min-width: $media-tablet) {
+        top: auto;
+        bottom: -2px;
+        left: -22px;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+@mixin firstDefenderOnBench {
+  @media screen and (min-width: $media-tablet) {
+    margin-left: 20px;
+  }
+  &:before {
+    content: 'Abwehr';
+    color: var(--primary-font-color);
+    position: absolute;
+    top: -30px;
+    left: 0;
+    @media screen and (min-width: $media-tablet) {
+      top: auto;
+      bottom: 13px;
+      left: -37px;
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+@mixin firstMidfielderOnBench {
+  @media screen and (min-width: $media-tablet) {
+    margin-left: 20px;
+  }
+  &:before {
+    content: 'Mittelfeld';
+    color: var(--primary-font-color);
+    position: absolute;
+    top: -30px;
+    left: 0;
+    @media screen and (min-width: $media-tablet) {
+      top: auto;
+      bottom: 20px;
+      left: -44px;
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+@mixin firstForwardOnBench {
+  @media screen and (min-width: $media-tablet) {
+    margin-left: 20px;
+  }
+  &:before {
+    content: 'Sturm';
+    color: var(--primary-font-color);
+    position: absolute;
+    top: -30px;
+    left: 0;
+    @media screen and (min-width: $media-tablet) {
+      top: auto;
+      bottom: 6px;
+      left: -31px;
+      transform: rotate(-90deg);
+    }
+  }
+}

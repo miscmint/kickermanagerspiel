@@ -1,0 +1,47 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en" f:schemaLocation="https://fluidtypo3.org/schemas/fluid-master.xsd" data-namespace-typo3-fluid="true">
+<f:if condition="{player.lastname} == ''">
+    <f:then>
+        <div class="player blank {position}-{i.cycle} {class}">
+            <span class="shadow"></span>
+        </div>
+    </f:then>
+    <f:else>
+        <f:if condition="{player.lastname} == '- Platzhalter -'">
+            <f:then>
+                <div class="player placeholder {position}-{i.cycle} {class}">
+                    <span class="firstname">
+                        &nbsp;
+                    </span>
+                    <span class="name">
+                        - Platzhalter -
+                    </span>
+                    <span class="club">
+                        &nbsp;
+                    </span>
+                    <span class="info"><span class="points"></span><span class="value no-symbol">{player.value}</span><span class="ratio no-symbol"></span></span>
+                    <span class="shadow"></span>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="player club-{player.club.id} {position}-{i.cycle} {class}">
+                    <span class="firstname">
+                        {player.firstname}
+                    </span>
+                    <span class="name">
+                        {player.lastname}
+                    </span>
+                    <span class="club">
+                        {player.club.title}
+                    </span>
+                    <span class="info">
+                        <span class="points">{player.points}</span>
+                        <span class="value">{player.value}</span>
+                        <span class="ratio {f:if(condition: player.approximated,then: 'approx')}">{player.ratioRounded}</span>
+                    </span>
+                    <span class="shadow"></span>
+                </div>
+            </f:else>
+        </f:if>
+    </f:else>
+</f:if>
+</html>

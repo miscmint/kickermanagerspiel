@@ -1,0 +1,16 @@
+/vendor
+/typo3
+/htdocs
+!/htdocs/favicon.ico
+/public
+!/public/favicon.ico
+/.idea
+/var
+.php_cs.cache
+.php-cs-fixer.cache
+generateProjectIml.php
+/*.sql
+/*.php
+.composercache
+/.sass-cache
+.sass-cache/

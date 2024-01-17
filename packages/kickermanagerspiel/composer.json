@@ -1,0 +1,26 @@
+{
+    "name": "simon/kickermanagerspiel",
+    "description": "Features rund um das kicker Managerspiel",
+    "version": "1.0.0",
+    "type": "typo3-cms-extension",
+    "authors": [
+        {
+            "name": "Daniel Simon",
+            "role": "Developer",
+            "email": "daniel-b.simon@gmx.de"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "~12.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Simon\\Kickermanagerspiel\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "kickermanagerspiel"
+        }
+    }
+}

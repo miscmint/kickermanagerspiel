@@ -1,0 +1,25 @@
+mod.wizards {
+    newContentElement {
+        wizardItems {
+            plugins {
+                elements {
+                    randomteam {
+                        iconIdentifier = kickermanagerspielicon
+                        title = Zufälliges Team generieren
+                        description =
+                        tt_content_defValues.CType = list
+                        tt_content_defValues.list_type = kickermanagerspiel_randomteam
+                    }
+                    effectivefootballers {
+                        iconIdentifier = kickermanagerspielicon
+                        title = Effektive Fußballer
+                        description =
+                        tt_content_defValues.CType = list
+                        tt_content_defValues.list_type = kickermanagerspiel_effectivefootballers
+                    }
+                }
+                show := addToList(randomteam,effectivefootballers)
+            }
+        }
+    }
+}

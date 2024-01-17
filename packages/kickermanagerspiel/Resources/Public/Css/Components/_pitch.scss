@@ -1,0 +1,41 @@
+#pitch-wrapper {
+  position: relative;
+  margin: 0 1em 2rem 1em;
+  @media screen and (min-width: $media-tablet) {
+    width: 1200px;
+    margin: 6rem auto 2rem auto;
+  }
+  .team-value {
+    float: right;
+    @media screen and (min-width: $media-tablet) {
+      position: absolute;
+      right: 86px;
+      bottom: 0;
+      z-index: 9;
+    }
+  }
+}
+#pitch {
+  display: none;
+  @media screen and (min-width: $media-tablet) {
+    display: block;
+    width: 1200px;
+    height: 400px;
+    transform: skew(-22.5deg);
+    background: var(--primary-color);
+    border: 4px solid #fff;
+    margin: 0 auto;
+  }
+}
+
+#bench {
+  margin: 2rem auto;
+}
+
+.bench-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 20px;
+}

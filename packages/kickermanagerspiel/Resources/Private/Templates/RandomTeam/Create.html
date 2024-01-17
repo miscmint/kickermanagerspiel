@@ -1,0 +1,56 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en" f:schemaLocation="https://fluidtypo3.org/schemas/fluid-master.xsd" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="content">
+    <section class="form">
+        <div class="container">
+            <f:render partial="RandomTeam/Form" arguments="{_all}"/>
+        </div>
+    </section>
+    <section class="headline">
+        <div class="container">
+            <h2>Startelf</h2>
+        </div>
+    </section>
+    <section id="pitch-wrapper">
+        <div id="formation" class="formation-{randomDemand.formation} {f:if(condition:success,else:'no-success')}">
+            <div class="goalkeeper">
+                <f:for each="{team.goalkeeper}" as="player" iteration="i">
+                    <f:render partial="Player" arguments="{player:player, position:'goalkeeper', i:i}"/>
+                </f:for>
+            </div>
+            <div class="defender">
+                <f:for each="{team.defender}" as="player" iteration="i">
+                    <f:render partial="Player" arguments="{player:player, position:'defender', i:i}"/>
+                </f:for>
+            </div>
+            <div class="midfielder">
+                <f:for each="{team.midfielder}" as="player" iteration="i">
+                    <f:render partial="Player" arguments="{player:player, position:'midfielder', i:i}"/>
+                </f:for>
+            </div>
+            <div class="forward">
+                <f:for each="{team.forward}" as="player" iteration="i">
+                    <f:render partial="Player" arguments="{player:player, position:'forward', i:i}"/>
+                </f:for>
+            </div>
+        </div>
+        <div id="pitch"></div>
+        <f:if condition="{success}">
+            <f:else>
+                <f:render partial="RandomTeam/NoTeamFound" arguments="{_all}"/>
+            </f:else>
+        </f:if>
+        <f:if condition="{teamValue}">
+            <span class="team-value">Gesamt: {teamValue} Mio.</span>
+        </f:if>
+    </section>
+    <section id="bench" class="bench-{randomDemand.formation}">
+        <div class="container">
+            <h2>Reservebank</h2>
+            <div class="bench-wrapper">
+                <f:render partial="RandomTeam/Bench" arguments="{_all}"/>
+            </div>
+        </div>
+    </section>
+</f:section>
+</html>

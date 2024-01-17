@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  Simon\Kickermanagerspiel\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Domain/Model/*'
+  Simon\Kickermanagerspiel\Command\ImportCsvCommand:
+    tags:
+      - name: 'console.command'
+        command: 'kickermanagerspiel:import:csv'
+        description: ''

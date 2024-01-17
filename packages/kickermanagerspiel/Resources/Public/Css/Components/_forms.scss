@@ -1,0 +1,77 @@
+form {
+  margin: 2em auto;
+  @media screen and (min-width: $media-tablet) {
+    width: 70%;
+  }
+  * {
+    font-family: 'Teko', sans-serif;
+  }
+  > .formwrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em 0;
+  }
+  .formfield {
+    width: 100%;
+    margin-bottom: 1em;
+    @media screen and (min-width: $media-tablet) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .col2 {
+    label {
+      width: 500px;
+    }
+  }
+  label {
+    @media screen and (min-width: $media-tablet) {
+      display: inline-block;
+      width: 316px;
+      text-align: right;
+      margin-right: 10px;
+    }
+  }
+  select {
+    font-size: 90%;
+    display: inline-block;
+    width: 100%;
+    color: var(--primary-font-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-font-color);
+    border-radius: 4px;
+    padding: 3px 10px 0 10px;
+    @media screen and (min-width: $media-tablet) {
+
+    }
+    option {
+      font-size: 100%;
+    }
+  }
+  input {
+    font-size: 90%;
+    width: 100%;
+    color: var(--primary-font-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-font-color);
+    border-radius: 4px;
+    padding: 3px 10px 0 10px;
+  }
+  .submit-button {
+    font-size: 90%;
+    width: 100%;
+    text-align: center;
+    color: var(--primary-color);
+    background-color: var(--primary-font-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 4px;
+    margin-top: 1em;
+    cursor: pointer;
+    &:hover {
+      color: var(--primary-font-color);
+      background-color: var(--primary-color);
+      border: 1px solid var(--primary-font-color);
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# cat=Plugin//01; type=string; label=Ordner mit Datensätzen
+folder = 0

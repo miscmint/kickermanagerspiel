@@ -1,0 +1,103 @@
+{
+	"minimum-stability": "alpha",
+	"config": {
+
+		"optimize-autoloader": true,
+		"sort-packages": true,
+		"platform": {
+			"php": "8.2.10"
+		},
+		"allow-plugins": {
+			"typo3/cms-composer-installers": true,
+			"typo3/class-alias-loader": true
+		}
+	},
+	"repositories": [
+		{ "type": "path", "url": "packages/*" }
+	],
+	"name": "simon/kickermanagerspielinstance",
+	"description" : "Features rund um das kicker Managerspiel",
+	"license": "GPL-2.0-or-later",
+
+	"require": {
+		"php": "8.2.*",
+		"b13/http2": "^2.0",
+		"simon/kickermanagerspiel": "@dev",
+		"typo3/cms-backend": "12.4.*",
+		"typo3/cms-belog": "12.4.*",
+		"typo3/cms-beuser": "12.4.*",
+		"typo3/cms-composer-installers": "5.*",
+		"typo3/cms-core": "12.4.*",
+		"typo3/cms-extbase": "12.4.*",
+		"typo3/cms-extensionmanager": "12.4.*",
+		"typo3/cms-felogin": "12.4.*",
+		"typo3/cms-filelist": "12.4.*",
+		"typo3/cms-fluid": "12.4.*",
+		"typo3/cms-fluid-styled-content": "12.4.*",
+		"typo3/cms-form": "12.4.*",
+		"typo3/cms-frontend": "12.4.*",
+		"typo3/cms-info": "12.4.*",
+		"typo3/cms-install": "12.4.*",
+		"typo3/cms-redirects": "12.4.*",
+		"typo3/cms-rte-ckeditor": "12.4.*",
+		"typo3/cms-seo": "12.4.*",
+		"typo3/cms-setup": "12.4.*",
+		"typo3/cms-sys-note": "12.4.*",
+		"typo3/cms-t3editor": "12.4.*",
+		"typo3/cms-tstemplate": "12.4.*",
+		"typo3/cms-viewpage": "12.4.*"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "*",
+		"typo3/cms-adminpanel": "12.4.*",
+		"typo3/cms-lowlevel": "12.4.*",
+		"typo3/coding-standards": "^0.5.3"
+	},
+	"extra": {
+		"typo3/cms": {
+			"cms-package-dir": "{$vendor-dir}/typo3/cms",
+			"web-dir": "public"
+		},
+		"helhum/dotenv-connector": {
+			"env-file": ".env"
+		},
+		"helhum/typo3-console": {
+			"install-extension-dummy": "0"
+		}
+	},
+	"scripts":{
+		"post-create-project-cmd": "@add-local-git-config",
+		"add-local-git-config": [
+			"git init",
+			"git add .",
+			"git config --local include.path ../.gitconfig",
+			"echo -e 'GIT is set up, do not forget to add your origin (the gitlab url for this project) with git origin add git@git.b-factor.de:customer/project or something similar'",
+			"echo -e 'You can now execute `composer guidedinstall` or import a typo3 database and execute `composer typo3install`'"
+		],
+		"addtrustedhostpattern": "@php vendor/bin/typo3cms configuration:set SYS/trustedHostsPattern '.*'",
+		"addfilefillconfig": "@php vendor/bin/typo3cms configuration:set EXTCONF/filefill/storages/1 '[{\"identifier\":\"sys_domain\"},{\"identifier\":\"placeholder\"}]' --json",
+		"killcache": "@php vendor/bin/typo3 cache:flush 2> /dev/null || echo -e 'not yet set up'",
+		"extensionsetupifpossible": "@php vendor/bin/typo3cms install:extensionsetupifpossible",
+		"typo3install": [
+			"@extensionsetupifpossible",
+			"@addtrustedhostpattern",
+			"@addfilefillconfig"
+		],
+		"guidedinstall" : "@php vendor/bin/typo3cms install:setup",
+		"post-autoload-dump": [
+			"@killcache"
+		],
+		"post-update-cmd": [
+			"git config --local include.path ../.gitconfig 2> /dev/null || echo 'no git yet'"
+		],
+		"post-install-cmd": [
+			"git config --local include.path ../.gitconfig 2> /dev/null || echo 'no git yet'",
+			"echo -e 'If this is an initial install either execute `composer guidedinstall` or import a typo3 database and execute `composer typo3install`'"
+		],
+		"csfixer": "@php vendor/bin/php-cs-fixer fix packages",
+		"minifyjs": [
+			"cd packages/kickermanagerspiel/Resources/Public/JavaScript && for file in `pwd`/*.js; do terser $file -m -c > `basename $file .js`.min.js; done && rm *.min.min.js || true"
+		]
+	}
+
+}

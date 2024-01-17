@@ -1,0 +1,1974 @@
+@charset "UTF-8";
+:root {
+  --primary-font-color: #ffffff;
+  --primary-color: #567d46;
+  --background-color: #343438;
+  --error-color: #eb4800;
+}
+
+@font-face {
+  font-family: "Teko";
+  src: url("../Fonts/teko/teko.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Teko300";
+  src: url("../Fonts/teko/teko300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: var(--primary-font-color);
+  background-color: var(--background-color);
+  font-family: "Teko", sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+@media screen and (min-width: 1023px) {
+  main {
+    zoom: 0.7;
+  }
+}
+@media screen and (min-width: 1400px) {
+  main {
+    zoom: 1;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  width: 100%;
+  max-width: 1370px;
+  padding: 0 1em;
+}
+@media screen and (min-width: 1023px) {
+  .container {
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+.col2 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.col2 > div {
+  width: 100%;
+}
+@media screen and (min-width: 1023px) {
+  .col2 > div {
+    width: 50% !important;
+  }
+}
+
+.col3 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+@media screen and (min-width: 1023px) {
+  .col3 > div {
+    width: 33.3333% !important;
+  }
+}
+
+img {
+  vertical-align: middle;
+}
+
+h1 {
+  font-size: 200%;
+}
+
+h2 {
+  font-size: 150%;
+}
+
+h3 {
+  font-size: 120%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 2px;
+}
+
+form {
+  margin: 2em auto;
+}
+@media screen and (min-width: 1023px) {
+  form {
+    width: 70%;
+  }
+}
+form * {
+  font-family: "Teko", sans-serif;
+}
+form > .formwrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2em 0;
+}
+form .formfield {
+  width: 100%;
+  margin-bottom: 1em;
+}
+@media screen and (min-width: 1023px) {
+  form .formfield {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+form .col2 label {
+  width: 500px;
+}
+@media screen and (min-width: 1023px) {
+  form label {
+    display: inline-block;
+    width: 316px;
+    text-align: right;
+    margin-right: 10px;
+  }
+}
+form select {
+  font-size: 90%;
+  display: inline-block;
+  width: 100%;
+  color: var(--primary-font-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-font-color);
+  border-radius: 4px;
+  padding: 3px 10px 0 10px;
+}
+form select option {
+  font-size: 100%;
+}
+form input {
+  font-size: 90%;
+  width: 100%;
+  color: var(--primary-font-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-font-color);
+  border-radius: 4px;
+  padding: 3px 10px 0 10px;
+}
+form .submit-button {
+  font-size: 90%;
+  width: 100%;
+  text-align: center;
+  color: var(--primary-color);
+  background-color: var(--primary-font-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 4px;
+  margin-top: 1em;
+  cursor: pointer;
+}
+form .submit-button:hover {
+  color: var(--primary-font-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-font-color);
+}
+
+#pitch-wrapper {
+  position: relative;
+  margin: 0 1em 2rem 1em;
+}
+@media screen and (min-width: 1023px) {
+  #pitch-wrapper {
+    width: 1200px;
+    margin: 6rem auto 2rem auto;
+  }
+}
+#pitch-wrapper .team-value {
+  float: right;
+}
+@media screen and (min-width: 1023px) {
+  #pitch-wrapper .team-value {
+    position: absolute;
+    right: 86px;
+    bottom: 0;
+    z-index: 9;
+  }
+}
+
+#pitch {
+  display: none;
+}
+@media screen and (min-width: 1023px) {
+  #pitch {
+    display: block;
+    width: 1200px;
+    height: 400px;
+    transform: skew(-22.5deg);
+    background: var(--primary-color);
+    border: 4px solid #fff;
+    margin: 0 auto;
+  }
+}
+
+#bench {
+  margin: 2rem auto;
+}
+
+.bench-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.player {
+  width: 178px;
+  height: 84px;
+  padding: 5px;
+  border-radius: 4px;
+  border-top: 2px solid #ccc;
+  border-right: 2px solid #111;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 1023px) {
+  .player {
+    position: absolute;
+    margin-bottom: 0;
+  }
+}
+.player span {
+  display: block;
+  line-height: 1;
+  text-align: center;
+}
+
+.firstname {
+  font-family: "Teko300", sans-serif;
+  font-size: 80%;
+}
+
+.name {
+  font-size: 130%;
+}
+
+.club {
+  font-size: 50%;
+}
+
+.info {
+  font-size: 80%;
+  display: flex !important;
+  justify-content: space-around;
+  padding-top: 3px;
+  margin-top: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.info .value:before {
+  content: "/";
+  margin-right: 10px;
+}
+.info .value:after {
+  content: " Mio.";
+}
+.info .ratio:before {
+  content: "=";
+  margin-right: 10px;
+}
+.info .ratio.approx:before {
+  content: "≈";
+}
+
+@media screen and (min-width: 1023px) {
+  .shadow {
+    width: 100px;
+    padding: 2px 80px;
+    position: absolute;
+    bottom: -10px;
+    left: 8px;
+    -webkit-box-shadow: 0 10px 7px 0 rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0 10px 7px 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.75);
+  }
+}
+
+.bench-wrapper .player {
+  position: relative;
+  margin-top: 20px;
+}
+@media screen and (min-width: 1023px) {
+  .bench-wrapper .player {
+    margin-top: 0;
+  }
+}
+.bench-wrapper .player .shadow {
+  display: none;
+}
+
+.placeholder {
+  background-color: #aaa;
+}
+.placeholder * {
+  color: #e5e5e5;
+}
+.placeholder .info {
+  border-top: 1px solid #e5e5e5;
+}
+
+.no-symbol:before {
+  content: none !important;
+}
+
+.blank {
+  display: none;
+}
+@media screen and (min-width: 1023px) {
+  .blank {
+    display: block;
+  }
+  .blank:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 172px;
+    height: 78px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    top: 0;
+    left: 0;
+  }
+}
+
+#formation:before {
+  font-size: 150%;
+  line-height: 1.8;
+}
+@media screen and (max-width: 1022px) {
+  #formation {
+    background: var(--primary-color);
+    border: 4px solid #fff;
+    padding: 0 10px;
+  }
+  #formation.no-success {
+    display: none;
+  }
+  #formation:before {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    line-height: 1;
+    padding: 4px 6px 0 6px;
+  }
+  #formation > div {
+    margin-top: 40px;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  #formation .goalkeeper:before {
+    content: "Tor";
+    color: var(--primary-font-color);
+    position: absolute;
+    top: -30px;
+    left: 0;
+  }
+  #formation .defender:before {
+    content: "Abwehr";
+    color: var(--primary-font-color);
+    position: absolute;
+    top: -30px;
+    left: 0;
+  }
+  #formation .midfielder:before {
+    content: "Mittelfeld";
+    color: var(--primary-font-color);
+    position: absolute;
+    top: -30px;
+    left: 0;
+  }
+  #formation .forward:before {
+    content: "Sturm";
+    color: var(--primary-font-color);
+    position: absolute;
+    top: -30px;
+    left: 0;
+  }
+}
+@media screen and (min-width: 1023px) {
+  #formation {
+    position: absolute;
+    z-index: 1;
+  }
+  #formation:before {
+    margin-left: 90px;
+  }
+  #formation .goalkeeper {
+    position: absolute;
+    top: 0;
+    left: 83px;
+  }
+  #formation .defender {
+    position: absolute;
+    top: 0;
+    left: 350px;
+  }
+  #formation .midfielder {
+    position: absolute;
+    top: 0;
+  }
+  #formation .forward {
+    position: absolute;
+    top: 0;
+    left: 1130px;
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  #bench .goalkeeper-2 {
+    margin-left: 20px;
+  }
+}
+#bench .goalkeeper-2:before {
+  content: "Tor";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  #bench .goalkeeper-2:before {
+    top: auto;
+    bottom: -2px;
+    left: -22px;
+    transform: rotate(-90deg);
+  }
+}
+
+.formation-352 .goalkeeper-2,
+.formation-352 .goalkeeper-3,
+.formation-352 .defender-4,
+.formation-352 .defender-5,
+.formation-352 .defender-6,
+.formation-352 .midfielder-6,
+.formation-352 .midfielder-7,
+.formation-352 .midfielder-8,
+.formation-352 .forward-3,
+.formation-352 .forward-4,
+.formation-352 .forward-5 {
+  display: none;
+}
+
+.bench-352 .goalkeeper-1,
+.bench-352 .defender-1,
+.bench-352 .defender-2,
+.bench-352 .defender-3,
+.bench-352 .midfielder-1,
+.bench-352 .midfielder-2,
+.bench-352 .midfielder-3,
+.bench-352 .midfielder-4,
+.bench-352 .midfielder-5,
+.bench-352 .forward-1,
+.bench-352 .forward-2 {
+  display: none;
+}
+
+.formation-442 .goalkeeper-2,
+.formation-442 .goalkeeper-3,
+.formation-442 .defender-5,
+.formation-442 .defender-6,
+.formation-442 .midfielder-5,
+.formation-442 .midfielder-6,
+.formation-442 .midfielder-7,
+.formation-442 .midfielder-8,
+.formation-442 .forward-3,
+.formation-442 .forward-4,
+.formation-442 .forward-5 {
+  display: none;
+}
+
+.bench-442 .goalkeeper-1,
+.bench-442 .defender-1,
+.bench-442 .defender-2,
+.bench-442 .defender-3,
+.bench-442 .defender-4,
+.bench-442 .midfielder-1,
+.bench-442 .midfielder-2,
+.bench-442 .midfielder-3,
+.bench-442 .midfielder-4,
+.bench-442 .forward-1,
+.bench-442 .forward-2 {
+  display: none;
+}
+
+.formation-433 .goalkeeper-2,
+.formation-433 .goalkeeper-3,
+.formation-433 .defender-5,
+.formation-433 .defender-6,
+.formation-433 .midfielder-4,
+.formation-433 .midfielder-5,
+.formation-433 .midfielder-6,
+.formation-433 .midfielder-7,
+.formation-433 .midfielder-8,
+.formation-433 .forward-4,
+.formation-433 .forward-5 {
+  display: none;
+}
+
+.bench-433 .goalkeeper-1,
+.bench-433 .defender-1,
+.bench-433 .defender-2,
+.bench-433 .defender-3,
+.bench-433 .defender-4,
+.bench-433 .midfielder-1,
+.bench-433 .midfielder-2,
+.bench-433 .midfielder-3,
+.bench-433 .forward-1,
+.bench-433 .forward-2,
+.bench-433 .forward-3 {
+  display: none;
+}
+
+.formation-343 .goalkeeper-2,
+.formation-343 .goalkeeper-3,
+.formation-343 .defender-4,
+.formation-343 .defender-5,
+.formation-343 .defender-6,
+.formation-343 .midfielder-5,
+.formation-343 .midfielder-6,
+.formation-343 .midfielder-7,
+.formation-343 .midfielder-8,
+.formation-343 .forward-4,
+.formation-343 .forward-5 {
+  display: none;
+}
+
+.bench-343 .goalkeeper-1,
+.bench-343 .defender-1,
+.bench-343 .defender-2,
+.bench-343 .defender-3,
+.bench-343 .midfielder-1,
+.bench-343 .midfielder-2,
+.bench-343 .midfielder-3,
+.bench-343 .midfielder-4,
+.bench-343 .forward-1,
+.bench-343 .forward-2,
+.bench-343 .forward-3 {
+  display: none;
+}
+
+.formation-451 .goalkeeper-2,
+.formation-451 .goalkeeper-3,
+.formation-451 .defender-5,
+.formation-451 .defender-6,
+.formation-451 .midfielder-6,
+.formation-451 .midfielder-7,
+.formation-451 .midfielder-8,
+.formation-451 .forward-2,
+.formation-451 .forward-3,
+.formation-451 .forward-4,
+.formation-451 .forward-5 {
+  display: none;
+}
+
+.bench-451 .goalkeeper-1,
+.bench-451 .defender-1,
+.bench-451 .defender-2,
+.bench-451 .defender-3,
+.bench-451 .defender-4,
+.bench-451 .midfielder-1,
+.bench-451 .midfielder-2,
+.bench-451 .midfielder-3,
+.bench-451 .midfielder-4,
+.bench-451 .midfielder-5,
+.bench-451 .forward-1 {
+  display: none;
+}
+
+.formation-532 .goalkeeper-2,
+.formation-532 .goalkeeper-3,
+.formation-532 .defender-6,
+.formation-532 .midfielder-4,
+.formation-532 .midfielder-5,
+.formation-532 .midfielder-6,
+.formation-532 .midfielder-7,
+.formation-532 .midfielder-8,
+.formation-532 .forward-3,
+.formation-532 .forward-4,
+.formation-532 .forward-5 {
+  display: none;
+}
+
+.bench-532 .goalkeeper-1,
+.bench-532 .defender-1,
+.bench-532 .defender-2,
+.bench-532 .defender-3,
+.bench-532 .defender-4,
+.bench-532 .defender-5,
+.bench-532 .midfielder-1,
+.bench-532 .midfielder-2,
+.bench-532 .midfielder-3,
+.bench-532 .forward-1,
+.bench-532 .forward-2 {
+  display: none;
+}
+
+.formation-541 .goalkeeper-2,
+.formation-541 .goalkeeper-3,
+.formation-541 .defender-6,
+.formation-541 .midfielder-5,
+.formation-541 .midfielder-6,
+.formation-541 .midfielder-7,
+.formation-541 .midfielder-8,
+.formation-541 .forward-2,
+.formation-541 .forward-3,
+.formation-541 .forward-4,
+.formation-541 .forward-5 {
+  display: none;
+}
+
+.bench-541 .goalkeeper-1,
+.bench-541 .defender-1,
+.bench-541 .defender-2,
+.bench-541 .defender-3,
+.bench-541 .defender-4,
+.bench-541 .defender-5,
+.bench-541 .midfielder-1,
+.bench-541 .midfielder-2,
+.bench-541 .midfielder-3,
+.bench-541 .midfielder-4,
+.bench-541 .forward-1 {
+  display: none;
+}
+
+.formation-343:before {
+  content: "3-4-3";
+}
+.formation-343 .midfielder {
+  left: 750px;
+}
+.formation-343 .goalkeeper-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-343 .defender-1 {
+  top: -32px;
+  left: -76px;
+}
+.formation-343 .defender-2 {
+  top: 99px;
+  left: -130px;
+}
+.formation-343 .defender-3 {
+  top: 234px;
+  left: -186px;
+}
+.formation-343 .midfielder-1 {
+  top: 34px;
+  left: -103px;
+  z-index: 1;
+}
+.formation-343 .midfielder-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-343 .midfielder-3 {
+  top: -67px;
+  left: -2px;
+}
+.formation-343 .midfielder-4 {
+  top: 269px;
+  left: -141px;
+}
+.formation-343 .forward-1 {
+  top: -32px;
+  left: -76px;
+}
+.formation-343 .forward-2 {
+  top: 99px;
+  left: -130px;
+}
+.formation-343 .forward-3 {
+  top: 234px;
+  left: -186px;
+}
+.formation-343 .defender-4, .formation-343 .defender-5, .formation-343 .midfielder-5 {
+  display: none;
+}
+
+@media screen and (min-width: 1023px) {
+  .bench-343 .defender-4 {
+    margin-left: 20px;
+  }
+}
+.bench-343 .defender-4:before {
+  content: "Abwehr";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-343 .defender-4:before {
+    top: auto;
+    bottom: 13px;
+    left: -37px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-343 .midfielder-5 {
+    margin-left: 20px;
+  }
+}
+.bench-343 .midfielder-5:before {
+  content: "Mittelfeld";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-343 .midfielder-5:before {
+    top: auto;
+    bottom: 20px;
+    left: -44px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-343 .forward-4 {
+    margin-left: 20px;
+  }
+}
+.bench-343 .forward-4:before {
+  content: "Sturm";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-343 .forward-4:before {
+    top: auto;
+    bottom: 6px;
+    left: -31px;
+    transform: rotate(-90deg);
+  }
+}
+
+.formation-352:before {
+  content: "3-5-2";
+}
+.formation-352 .midfielder {
+  left: 616px;
+}
+.formation-352 .goalkeeper-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-352 .defender-1 {
+  top: -32px;
+  left: -76px;
+}
+.formation-352 .defender-2 {
+  top: 99px;
+  left: -130px;
+}
+.formation-352 .defender-3 {
+  top: 234px;
+  left: -186px;
+}
+.formation-352 .midfielder-1 {
+  top: -32px;
+  left: 149px;
+}
+.formation-352 .midfielder-2 {
+  top: 99px;
+  left: 95px;
+}
+.formation-352 .midfielder-3 {
+  top: 234px;
+  left: 39px;
+}
+.formation-352 .midfielder-4 {
+  top: 34px;
+  left: -103px;
+}
+.formation-352 .midfielder-5 {
+  top: 168px;
+  left: -158px;
+}
+.formation-352 .forward-1 {
+  top: 34px;
+  left: -103px;
+}
+.formation-352 .forward-2 {
+  top: 168px;
+  left: -158px;
+}
+
+@media screen and (min-width: 1023px) {
+  .bench-352 .defender-4 {
+    margin-left: 20px;
+  }
+}
+.bench-352 .defender-4:before {
+  content: "Abwehr";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-352 .defender-4:before {
+    top: auto;
+    bottom: 13px;
+    left: -37px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-352 .midfielder-6 {
+    margin-left: 20px;
+  }
+}
+.bench-352 .midfielder-6:before {
+  content: "Mittelfeld";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-352 .midfielder-6:before {
+    top: auto;
+    bottom: 20px;
+    left: -44px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-352 .forward-3 {
+    margin-left: 20px;
+  }
+}
+.bench-352 .forward-3:before {
+  content: "Sturm";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-352 .forward-3:before {
+    top: auto;
+    bottom: 6px;
+    left: -31px;
+    transform: rotate(-90deg);
+  }
+}
+
+.formation-433:before {
+  content: "4-3-3";
+}
+.formation-433 .midfielder {
+  left: 750px;
+}
+.formation-433 .goalkeeper-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-433 .defender-1 {
+  top: 34px;
+  left: -103px;
+  z-index: 1;
+}
+.formation-433 .defender-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-433 .defender-3 {
+  top: -67px;
+  left: -2px;
+}
+.formation-433 .defender-4 {
+  top: 269px;
+  left: -141px;
+}
+.formation-433 .midfielder-1 {
+  top: -32px;
+  left: -76px;
+}
+.formation-433 .midfielder-2 {
+  top: 99px;
+  left: -130px;
+}
+.formation-433 .midfielder-3 {
+  top: 234px;
+  left: -186px;
+}
+.formation-433 .forward-1 {
+  top: -32px;
+  left: -76px;
+}
+.formation-433 .forward-2 {
+  top: 99px;
+  left: -130px;
+}
+.formation-433 .forward-3 {
+  top: 234px;
+  left: -186px;
+}
+.formation-433 .defender-5, .formation-433 .midfielder-4, .formation-433 .midfielder-5 {
+  display: none;
+}
+
+@media screen and (min-width: 1023px) {
+  .bench-433 .defender-5 {
+    margin-left: 20px;
+  }
+}
+.bench-433 .defender-5:before {
+  content: "Abwehr";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-433 .defender-5:before {
+    top: auto;
+    bottom: 13px;
+    left: -37px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-433 .midfielder-4 {
+    margin-left: 20px;
+  }
+}
+.bench-433 .midfielder-4:before {
+  content: "Mittelfeld";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-433 .midfielder-4:before {
+    top: auto;
+    bottom: 20px;
+    left: -44px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-433 .forward-4 {
+    margin-left: 20px;
+  }
+}
+.bench-433 .forward-4:before {
+  content: "Sturm";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-433 .forward-4:before {
+    top: auto;
+    bottom: 6px;
+    left: -31px;
+    transform: rotate(-90deg);
+  }
+}
+
+.formation-442:before {
+  content: "4-4-2";
+}
+.formation-442 .midfielder {
+  left: 750px;
+}
+.formation-442 .goalkeeper-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-442 .defender-1 {
+  top: 34px;
+  left: -103px;
+  z-index: 1;
+}
+.formation-442 .defender-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-442 .defender-3 {
+  top: -67px;
+  left: -2px;
+}
+.formation-442 .defender-4 {
+  top: 269px;
+  left: -141px;
+}
+.formation-442 .midfielder-1 {
+  top: 34px;
+  left: -103px;
+  z-index: 1;
+}
+.formation-442 .midfielder-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-442 .midfielder-3 {
+  top: -67px;
+  left: -2px;
+}
+.formation-442 .midfielder-4 {
+  top: 269px;
+  left: -141px;
+}
+.formation-442 .forward-1 {
+  top: 34px;
+  left: -103px;
+}
+.formation-442 .forward-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-442 .defender-5, .formation-442 .midfielder-5, .formation-442 .forward-3 {
+  display: none;
+}
+
+@media screen and (min-width: 1023px) {
+  .bench-442 .defender-5 {
+    margin-left: 20px;
+  }
+}
+.bench-442 .defender-5:before {
+  content: "Abwehr";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-442 .defender-5:before {
+    top: auto;
+    bottom: 13px;
+    left: -37px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-442 .midfielder-5 {
+    margin-left: 20px;
+  }
+}
+.bench-442 .midfielder-5:before {
+  content: "Mittelfeld";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-442 .midfielder-5:before {
+    top: auto;
+    bottom: 20px;
+    left: -44px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-442 .forward-3 {
+    margin-left: 20px;
+  }
+}
+.bench-442 .forward-3:before {
+  content: "Sturm";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-442 .forward-3:before {
+    top: auto;
+    bottom: 6px;
+    left: -31px;
+    transform: rotate(-90deg);
+  }
+}
+
+.formation-451:before {
+  content: "4-5-1";
+}
+.formation-451 .midfielder {
+  left: 616px;
+}
+.formation-451 .goalkeeper-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-451 .defender-1 {
+  top: 34px;
+  left: -103px;
+  z-index: 1;
+}
+.formation-451 .defender-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-451 .defender-3 {
+  top: -67px;
+  left: -2px;
+}
+.formation-451 .defender-4 {
+  top: 269px;
+  left: -141px;
+}
+.formation-451 .midfielder-1 {
+  top: 34px;
+  left: -103px;
+}
+.formation-451 .midfielder-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-451 .midfielder-3 {
+  top: -32px;
+  left: 149px;
+}
+.formation-451 .midfielder-4 {
+  top: 99px;
+  left: 95px;
+}
+.formation-451 .midfielder-5 {
+  top: 234px;
+  left: 39px;
+}
+.formation-451 .forward-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-451 .defender-5, .formation-451 .forward-2, .formation-451 .forward-3 {
+  display: none;
+}
+
+@media screen and (min-width: 1023px) {
+  .bench-451 .defender-5 {
+    margin-left: 20px;
+  }
+}
+.bench-451 .defender-5:before {
+  content: "Abwehr";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-451 .defender-5:before {
+    top: auto;
+    bottom: 13px;
+    left: -37px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-451 .midfielder-6 {
+    margin-left: 20px;
+  }
+}
+.bench-451 .midfielder-6:before {
+  content: "Mittelfeld";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-451 .midfielder-6:before {
+    top: auto;
+    bottom: 20px;
+    left: -44px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-451 .forward-2 {
+    margin-left: 20px;
+  }
+}
+.bench-451 .forward-2:before {
+  content: "Sturm";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-451 .forward-2:before {
+    top: auto;
+    bottom: 6px;
+    left: -31px;
+    transform: rotate(-90deg);
+  }
+}
+
+.formation-532:before {
+  content: "5-3-2";
+}
+.formation-532 .midfielder {
+  left: 883px;
+}
+.formation-532 .goalkeeper-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-532 .defender-1 {
+  top: -32px;
+  left: -76px;
+}
+.formation-532 .defender-2 {
+  top: 99px;
+  left: -130px;
+}
+.formation-532 .defender-3 {
+  top: 234px;
+  left: -186px;
+}
+.formation-532 .defender-4 {
+  top: 34px;
+  left: 122px;
+}
+.formation-532 .defender-5 {
+  top: 168px;
+  left: 66px;
+}
+.formation-532 .midfielder-1 {
+  top: -32px;
+  left: -76px;
+}
+.formation-532 .midfielder-2 {
+  top: 99px;
+  left: -130px;
+}
+.formation-532 .midfielder-3 {
+  top: 234px;
+  left: -186px;
+}
+.formation-532 .forward-1 {
+  top: 34px;
+  left: -103px;
+}
+.formation-532 .forward-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-532 .midfielder-4, .formation-532 .midfielder-5, .formation-532 .forward-3 {
+  display: none;
+}
+
+@media screen and (min-width: 1023px) {
+  .bench-532 .defender-6 {
+    margin-left: 20px;
+  }
+}
+.bench-532 .defender-6:before {
+  content: "Abwehr";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-532 .defender-6:before {
+    top: auto;
+    bottom: 13px;
+    left: -37px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-532 .midfielder-4 {
+    margin-left: 20px;
+  }
+}
+.bench-532 .midfielder-4:before {
+  content: "Mittelfeld";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-532 .midfielder-4:before {
+    top: auto;
+    bottom: 20px;
+    left: -44px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-532 .forward-3 {
+    margin-left: 20px;
+  }
+}
+.bench-532 .forward-3:before {
+  content: "Sturm";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-532 .forward-3:before {
+    top: auto;
+    bottom: 6px;
+    left: -31px;
+    transform: rotate(-90deg);
+  }
+}
+
+.formation-541:before {
+  content: "5-4-1";
+}
+.formation-541 .midfielder {
+  left: 883px;
+}
+.formation-541 .goalkeeper-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-541 .defender-1 {
+  top: -32px;
+  left: -76px;
+}
+.formation-541 .defender-2 {
+  top: 99px;
+  left: -130px;
+}
+.formation-541 .defender-3 {
+  top: 234px;
+  left: -186px;
+}
+.formation-541 .defender-4 {
+  top: 34px;
+  left: 122px;
+}
+.formation-541 .defender-5 {
+  top: 168px;
+  left: 66px;
+}
+.formation-541 .midfielder-1 {
+  top: 34px;
+  left: -103px;
+  z-index: 1;
+}
+.formation-541 .midfielder-2 {
+  top: 168px;
+  left: -158px;
+}
+.formation-541 .midfielder-3 {
+  top: -67px;
+  left: -2px;
+}
+.formation-541 .midfielder-4 {
+  top: 269px;
+  left: -141px;
+}
+.formation-541 .forward-1 {
+  top: 99px;
+  left: -130px;
+}
+.formation-541 .midfielder-5, .formation-541 .forward-2, .formation-541 .forward-3 {
+  display: none;
+}
+
+@media screen and (min-width: 1023px) {
+  .bench-541 .defender-6 {
+    margin-left: 20px;
+  }
+}
+.bench-541 .defender-6:before {
+  content: "Abwehr";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-541 .defender-6:before {
+    top: auto;
+    bottom: 13px;
+    left: -37px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-541 .midfielder-5 {
+    margin-left: 20px;
+  }
+}
+.bench-541 .midfielder-5:before {
+  content: "Mittelfeld";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-541 .midfielder-5:before {
+    top: auto;
+    bottom: 20px;
+    left: -44px;
+    transform: rotate(-90deg);
+  }
+}
+@media screen and (min-width: 1023px) {
+  .bench-541 .forward-2 {
+    margin-left: 20px;
+  }
+}
+.bench-541 .forward-2:before {
+  content: "Sturm";
+  color: var(--primary-font-color);
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+@media screen and (min-width: 1023px) {
+  .bench-541 .forward-2:before {
+    top: auto;
+    bottom: 6px;
+    left: -31px;
+    transform: rotate(-90deg);
+  }
+}
+
+/* Bayern */
+.club-1 {
+  color: #fff;
+  background-color: #dc052d;
+}
+.club-1 .info {
+  border-top: 1px solid #fff;
+}
+
+/* BVB (II) */
+.club-2, .club-49 {
+  color: #000;
+  background-color: #fde100;
+}
+.club-2 .info, .club-49 .info {
+  border-top: 1px solid #000;
+}
+
+/* Leipzig */
+.club-3 {
+  color: #dd0741;
+  background-color: #fff;
+}
+.club-3 .info {
+  border-top: 1px solid #dd0741;
+}
+
+/* Union */
+.club-4 {
+  color: #fcea10;
+  background-color: #d4011d;
+}
+.club-4 .info {
+  border-top: 1px solid #fcea10;
+}
+
+/* Freiburg (II) */
+.club-5, .club-40 {
+  color: #000;
+  background-color: #fff;
+}
+.club-5 .info, .club-40 .info {
+  border-top: 1px solid #000;
+}
+
+/* Leverkusen */
+.club-6 {
+  color: #000;
+  background-color: #e32221;
+}
+.club-6 .info {
+  border-top: 1px solid #000;
+}
+
+/* Frankfurt */
+.club-7 {
+  color: #fff;
+  background-color: #e1000f;
+}
+.club-7 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Wolfsburg */
+.club-8 {
+  color: #fff;
+  background-color: #65b32e;
+}
+.club-8 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Mainz */
+.club-9 {
+  color: #c3141e;
+  background-color: #fff;
+}
+.club-9 .info {
+  border-top: 1px solid #c3141e;
+}
+
+/* Gladbach */
+.club-10 {
+  color: #fff;
+  background-color: #000;
+}
+.club-10 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Köln */
+.club-11 {
+  color: #ed1c24;
+  background-color: #fff;
+}
+.club-11 .info {
+  border-top: 1px solid #ed1c24;
+}
+
+/* Hoffenheim */
+.club-12 {
+  color: #fff;
+  background-color: #1961b5;
+}
+.club-12 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Werder */
+.club-13 {
+  color: #fff;
+  background-color: #1d9053;
+}
+.club-13 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Bochum */
+.club-14 {
+  color: #fff;
+  background-color: #005ca9;
+}
+.club-14 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Augsburg */
+.club-15 {
+  color: #fff;
+  background-color: #ba3733;
+}
+.club-15 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Stuttgart */
+.club-16 {
+  color: #e32219;
+  background-color: #fff;
+}
+.club-16 .info {
+  border-top: 1px solid #e32219;
+}
+
+/* Heidenheim */
+.club-17 {
+  color: #003b79;
+  background-color: #e2001a;
+}
+.club-17 .info {
+  border-top: 1px solid #003b79;
+}
+
+/* Darmstadt */
+.club-18 {
+  color: #fff;
+  background-color: #0f47af;
+}
+.club-18 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Schalke */
+.club-19 {
+  color: #fff;
+  background-color: #004d9d;
+}
+.club-19 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Hertha */
+.club-20 {
+  color: #005ca9;
+  background-color: #fff;
+}
+.club-20 .info {
+  border-top: 1px solid #005ca9;
+}
+
+/* HSV */
+.club-21 {
+  color: #fff;
+  background-color: #0a3f86;
+}
+.club-21 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Düsseldorf */
+.club-22 {
+  color: #fff;
+  background-color: #da251d;
+}
+.club-22 .info {
+  border-top: 1px solid #fff;
+}
+
+/* St. Pauli */
+.club-23 {
+  color: #fff;
+  background-color: #8B4513;
+}
+.club-23 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Paderborn */
+.club-24 {
+  color: #fff;
+  background-color: #005ca8;
+}
+.club-24 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Karlsruhe */
+.club-25 {
+  color: #fff;
+  background-color: #003798;
+}
+.club-25 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Kiel */
+.club-26 {
+  color: #fff;
+  background-color: #0f5787;
+}
+.club-26 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Kaiserslautern */
+.club-27 {
+  color: #fff;
+  background-color: #c32a28;
+}
+.club-27 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Hannover */
+.club-28 {
+  color: #000;
+  background-color: #179d33;
+}
+.club-28 .info {
+  border-top: 1px solid #000;
+}
+
+/* Magdeburg */
+.club-29 {
+  color: #fff;
+  background-color: #0068b2;
+}
+.club-29 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Fürth */
+.club-30 {
+  color: #009932;
+  background-color: #fff;
+}
+.club-30 .info {
+  border-top: 1px solid #009932;
+}
+
+/* Rostock */
+.club-31 {
+  color: #0000fe;
+  background-color: #fff;
+}
+.club-31 .info {
+  border-top: 1px solid #ff0d01;
+}
+
+/* Nürnberg */
+.club-32 {
+  color: #fff;
+  background-color: #ad1732;
+}
+.club-32 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Braunschweig */
+.club-33 {
+  color: #14569c;
+  background-color: #fbbf0f;
+}
+.club-33 .info {
+  border-top: 1px solid #14569c;
+}
+
+/* Elversberg */
+.club-34 {
+  color: #000;
+  background-color: #fff;
+}
+.club-34 .info {
+  border-top: 1px solid #000;
+}
+
+/* Osnabrück */
+.club-35 {
+  color: #fff;
+  background-color: #511972;
+}
+.club-35 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Wehen */
+.club-36 {
+  color: #fff;
+  background-color: #c4161c;
+}
+.club-36 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Bielefeld */
+.club-37 {
+  color: #fff;
+  background-color: #004E95;
+}
+.club-37 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Regensburg */
+.club-38 {
+  color: #ff0000;
+  background-color: #fff;
+}
+.club-38 .info {
+  border-top: 1px solid #ff0000;
+}
+
+/* Sandhausen */
+.club-39 {
+  color: #000;
+  background-color: #fff;
+}
+.club-39 .info {
+  border-top: 1px solid #000;
+}
+
+/* Saarbrücken */
+.club-41 {
+  color: #ffce00;
+  background-color: #0033FF;
+}
+.club-41 .info {
+  border-top: 1px solid #ffce00;
+}
+
+/* Dresden */
+.club-42 {
+  color: #000;
+  background-color: #f3ac26;
+}
+.club-42 .info {
+  border-top: 1px solid #000;
+}
+
+/* Mannheim */
+.club-43 {
+  color: #fff;
+  background-color: #133e7b;
+}
+.club-43 .info {
+  border-top: 1px solid #fff;
+}
+
+/* 1860 */
+.club-44 {
+  color: #5d9af5;
+  background-color: #fff;
+}
+.club-44 .info {
+  border-top: 1px solid #5d9af5;
+}
+
+/* Viktoria Köln */
+.club-45 {
+  color: #000;
+  background-color: #fff;
+}
+.club-45 .info {
+  border-top: 1px solid #e61e25;
+}
+
+/* Verl */
+.club-46 {
+  color: #000;
+  background-color: #fff;
+}
+.club-46 .info {
+  border-top: 1px solid #000;
+}
+
+/* Ingolstadt */
+.club-47 {
+  color: #000;
+  background-color: #d71920;
+}
+.club-47 .info {
+  border-top: 1px solid #000;
+}
+
+/* Duisburg */
+.club-48 {
+  color: #3c4e99;
+  background-color: #fff;
+}
+.club-48 .info {
+  border-top: 1px solid #3c4e99;
+}
+
+/* Aue */
+.club-50 {
+  color: #fff;
+  background-color: #5d308f;
+}
+.club-50 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Essen */
+.club-51 {
+  color: #fff;
+  background-color: #e1001e;
+}
+.club-51 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Halle */
+.club-52 {
+  color: #fff;
+  background-color: #d10e0e;
+}
+.club-52 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Lübeck */
+.club-53 {
+  color: #fff;
+  background-color: #00975a;
+}
+.club-53 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Münster */
+.club-54 {
+  color: #fff;
+  background-color: #000;
+}
+.club-54 .info {
+  border-top: 1px solid #fff;
+}
+
+/* Ulm */
+.club-55 {
+  color: #000;
+  background-color: #fff;
+}
+.club-55 .info {
+  border-top: 1px solid #000;
+}
+
+/* Unterhaching */
+.club-56 {
+  color: #004d9a;
+  background-color: #e2001a;
+}
+.club-56 .info {
+  border-top: 1px solid #004d9a;
+}
+
+.no-team-found {
+  top: 20%;
+  left: 10%;
+  background-color: var(--error-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 30px;
+  z-index: 999;
+}
+@media screen and (min-width: 1023px) {
+  .no-team-found {
+    position: absolute;
+    width: 80%;
+  }
+}
+.no-team-found * {
+  color: var(--primary-font-color);
+}
+.no-team-found h3 {
+  margin-bottom: 1rem;
+}
+
+/*# sourceMappingURL=main.css.map */

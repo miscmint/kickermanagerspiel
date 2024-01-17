@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en" f:schemaLocation="https://fluidtypo3.org/schemas/fluid-master.xsd" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="content">
+    <section class="form">
+        <div class="container">
+            <f:render partial="RandomTeam/Form" arguments="{_all}"/>
+        </div>
+    </section>
+    <section class="headline">
+        <div class="container">
+            <h2>Startelf</h2>
+        </div>
+    </section>
+    <section id="pitch-wrapper">
+        <f:render partial="RandomTeam/Index/EmptyPitch" arguments="{_all}"/>
+    </section>
+    <section id="bench" class="bench-352">
+        <div class="container">
+            <h2>Reservebank</h2>
+            <div class="bench-wrapper">
+                <f:render partial="RandomTeam/Index/EmptyBench" arguments="{_all}"/>
+            </div>
+        </div>
+    </section>
+</f:section>
+</html>
