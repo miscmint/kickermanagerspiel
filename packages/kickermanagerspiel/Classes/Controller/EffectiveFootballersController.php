@@ -15,7 +15,6 @@ class EffectiveFootballersController extends ActionController
      */
     public function indexAction(): ResponseInterface
     {
-        DebuggerUtility::var_dump('perko');
         $assignedValues = [];
         $this->view->assignMultiple($assignedValues);
         return $this->htmlResponse();
