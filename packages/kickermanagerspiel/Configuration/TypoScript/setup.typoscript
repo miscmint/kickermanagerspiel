@@ -15,7 +15,7 @@ page.10 {
     }
 }
 page.includeCSS {
-    main = EXT:kickermanagerspiel/Resources/Public/Css/main.css
+    main = EXT:kickermanagerspiel/Resources/Public/Css/main.min.css
 }
 page.headerData {
     10 = TEXT

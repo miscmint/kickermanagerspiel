@@ -1,0 +1,14 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en" f:schemaLocation="https://fluidtypo3.org/schemas/fluid-master.xsd" data-namespace-typo3-fluid="true">
+<div class="player club-{player.club.id}">
+    <span class="name">
+        {player.lastname}
+    </span>
+    <span class="firstname">
+        {player.firstname}
+    </span>
+    <span class="club">
+        {player.club.title}
+    </span>
+    <span class="points"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{player.efficiency}</f:format.number></span>
+</div>
+</html>

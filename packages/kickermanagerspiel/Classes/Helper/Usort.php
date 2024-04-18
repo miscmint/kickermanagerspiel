@@ -20,4 +20,11 @@ class Usort
         }
         return ($value1 < $value2) ? 1 : -1;
     }
+
+    public static function compareGoalsOfAMatch(array $goal1, array $goal2): int
+    {
+        $sum1 = $goal1['scoreTeam1'] + $goal1['scoreTeam2'];
+        $sum2 = $goal2['scoreTeam1'] + $goal2['scoreTeam2'];
+        return ($sum1 < $sum2) ? -1 : 1;
+    }
 }

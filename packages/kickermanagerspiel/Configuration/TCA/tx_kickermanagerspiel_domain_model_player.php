@@ -144,6 +144,12 @@ return [
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_kickermanagerspiel_domain_model_club',
                 'foreign_table_where' => 'ORDER BY title',
+                'items' => [
+                    [
+                        'label' => '-- nichts angegeben --',
+                        'value' => 0,
+                    ],
+                ]
             ]
         ],
         'points' => [

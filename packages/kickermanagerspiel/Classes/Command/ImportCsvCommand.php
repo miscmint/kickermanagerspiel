@@ -22,8 +22,6 @@ class ImportCsvCommand extends Command
         'interactive_1_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00012023.csv',
         'interactive_2_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00022023.csv',
         'interactive_3_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00032023.csv',
-        /*'classic_1_2023' => 'https://kickermanagerspiel.82.pc/players-se-k00012023.csv',*/
-        /*'classic_1_2023' => 'https://kickermanagerspiel.82.pc/players-se-k00012023_2.csv',*/
         'classic_1_2023' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00012023.csv',
         'classic_2_2023' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00022023.csv',
         'classic_3_2023' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00032023.csv',

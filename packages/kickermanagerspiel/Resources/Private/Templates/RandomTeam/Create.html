@@ -15,22 +15,22 @@
         <div id="formation" class="formation-{randomDemand.formation} {f:if(condition:success,else:'no-success')}">
             <div class="goalkeeper">
                 <f:for each="{team.goalkeeper}" as="player" iteration="i">
-                    <f:render partial="Player" arguments="{player:player, position:'goalkeeper', i:i}"/>
+                    <f:render partial="RandomTeam/Player" arguments="{player:player, position:'goalkeeper', i:i}"/>
                 </f:for>
             </div>
             <div class="defender">
                 <f:for each="{team.defender}" as="player" iteration="i">
-                    <f:render partial="Player" arguments="{player:player, position:'defender', i:i}"/>
+                    <f:render partial="RandomTeam/Player" arguments="{player:player, position:'defender', i:i}"/>
                 </f:for>
             </div>
             <div class="midfielder">
                 <f:for each="{team.midfielder}" as="player" iteration="i">
-                    <f:render partial="Player" arguments="{player:player, position:'midfielder', i:i}"/>
+                    <f:render partial="RandomTeam/Player" arguments="{player:player, position:'midfielder', i:i}"/>
                 </f:for>
             </div>
             <div class="forward">
                 <f:for each="{team.forward}" as="player" iteration="i">
-                    <f:render partial="Player" arguments="{player:player, position:'forward', i:i}"/>
+                    <f:render partial="RandomTeam/Player" arguments="{player:player, position:'forward', i:i}"/>
                 </f:for>
             </div>
         </div>

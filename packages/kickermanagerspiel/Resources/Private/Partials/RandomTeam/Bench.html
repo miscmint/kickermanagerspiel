@@ -1,14 +1,14 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en" f:schemaLocation="https://fluidtypo3.org/schemas/fluid-master.xsd" data-namespace-typo3-fluid="true">
 <f:for each="{team.goalkeeper}" as="player" iteration="i">
-    <f:render partial="Player" arguments="{player:player, position:'goalkeeper', i:i}"/>
+    <f:render partial="RandomTeam/Player" arguments="{player:player, position:'goalkeeper', i:i}"/>
 </f:for>
 <f:for each="{team.defender}" as="player" iteration="i">
-    <f:render partial="Player" arguments="{player:player, position:'defender', i:i}"/>
+    <f:render partial="RandomTeam/Player" arguments="{player:player, position:'defender', i:i}"/>
 </f:for>
 <f:for each="{team.midfielder}" as="player" iteration="i">
-    <f:render partial="Player" arguments="{player:player, position:'midfielder', i:i}"/>
+    <f:render partial="RandomTeam/Player" arguments="{player:player, position:'midfielder', i:i}"/>
 </f:for>
 <f:for each="{team.forward}" as="player" iteration="i">
-    <f:render partial="Player" arguments="{player:player, position:'forward', i:i}"/>
+    <f:render partial="RandomTeam/Player" arguments="{player:player, position:'forward', i:i}"/>
 </f:for>
 </html>
