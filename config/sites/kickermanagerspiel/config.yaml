@@ -16,3 +16,12 @@ languages:
     websiteTitle: ''
 rootPageId: 1
 websiteTitle: ''
+routeEnhancers:
+  RandomTeam:
+    type: Extbase
+    extension: Kickermanagerspiel
+    plugin: RandomTeam
+    routes:
+      - routePath: '/per-zufall-erstelltes-team/'
+        _controller: 'RandomTeam::create'
+    defaultController: 'RandomTeam::index'
