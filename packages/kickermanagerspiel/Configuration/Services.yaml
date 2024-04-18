@@ -12,8 +12,3 @@ services:
       - name: 'console.command'
         command: 'kickermanagerspiel:import:csv'
         description: 'Import CSVs from kicker.de'
-  Simon\Kickermanagerspiel\Command\ImportMatchResultsCommand:
-    tags:
-      - name: 'console.command'
-        command: 'kickermanagerspiel:import:matchresults'
-        description: 'Import match results from openligadb.de'

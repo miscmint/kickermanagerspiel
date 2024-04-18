@@ -1948,35 +1948,6 @@ form .submit-button:hover {
   border-top: 1px solid #004d9a;
 }
 
-.list {
-  margin-top: 1em;
-}
-.list .player-wrapper {
-  display: flex;
-}
-.list .player-wrapper > div:first-of-type {
-  width: 60px;
-  font-size: 150%;
-  text-align: right;
-  padding-right: 20px;
-}
-.list .player {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  padding-top: 8px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: 10px;
-  width: 400px;
-  min-width: 400px;
-  height: 42px;
-}
-.list .player .club {
-  font-size: 80%;
-}
-
 .no-team-found {
   top: 20%;
   left: 10%;

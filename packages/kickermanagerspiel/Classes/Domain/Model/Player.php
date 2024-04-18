@@ -21,7 +21,6 @@ class Player extends AbstractEntity
     protected string $pointsMatchdays = '[]';
     protected int $season = 0;
     protected int $league = 0;
-    protected float $efficiency = 0.0;
 
     public function getTitle(): string
     {
@@ -151,16 +150,6 @@ class Player extends AbstractEntity
     public function setLeague(int $league): void
     {
         $this->league = $league;
-    }
-
-    public function getEfficiency(): float
-    {
-        return $this->efficiency;
-    }
-
-    public function setEfficiency(float $efficiency): void
-    {
-        $this->efficiency = $efficiency;
     }
 
     public function getRatio(): float

@@ -10,15 +10,8 @@ mod.wizards {
                         tt_content_defValues.CType = list
                         tt_content_defValues.list_type = kickermanagerspiel_randomteam
                     }
-                    effectivefootballers {
-                        iconIdentifier = kickermanagerspielicon
-                        title = Effektive Fußballer
-                        description =
-                        tt_content_defValues.CType = list
-                        tt_content_defValues.list_type = kickermanagerspiel_effectivefootballers
-                    }
                 }
-                show := addToList(randomteam,effectivefootballers)
+                show := addToList(randomteam)
             }
         }
     }

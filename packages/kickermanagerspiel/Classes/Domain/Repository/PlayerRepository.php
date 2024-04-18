@@ -2,10 +2,7 @@
 
 namespace Simon\Kickermanagerspiel\Domain\Repository;
 
-use Simon\Kickermanagerspiel\Domain\Model\Demand\EffifuDemand;
 use Simon\Kickermanagerspiel\Domain\Model\Player;
-use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class PlayerRepository extends Repository
@@ -55,34 +52,5 @@ class PlayerRepository extends Repository
             }
         }
         return $values;
-    }
-
-    /**
-     * @throws InvalidQueryException
-     */
-    public function getEffifus(EffifuDemand $effifuDemand)
-    {
-        $query = $this->createQuery();
-        $settings = $query->getQuerySettings();
-        $settings->setRespectStoragePage(false);
-        $query->setQuerySettings($settings);
-        $queryConstraints = [
-            $query->equals('league', $effifuDemand->getLeague()),
-            $query->equals('season', $effifuDemand->getSeason()),
-            $query->equals('mode', $effifuDemand::MODE),
-            $query->greaterThan('efficiency', 1),
-        ];
-        $query->matching(
-            $query->logicalAnd(...$queryConstraints)
-        );
-        $query->setLimit($effifuDemand::ITEMSPERPAGE);
-        $offset = ($effifuDemand->getPage() - 1) * $effifuDemand::ITEMSPERPAGE;
-        $query->setOffset($offset);
-        $query->setOrderings([
-            'efficiency' => QueryInterface::ORDER_DESCENDING,
-            'lastname' => QueryInterface::ORDER_ASCENDING,
-        ]);
-
-        return $query->execute();
     }
 }

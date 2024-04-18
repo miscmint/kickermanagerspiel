@@ -27,10 +27,10 @@ return [
         'searchFields' => 'id,mode,firstname,lastname,position,value,season',
     ],
     'types' => [
-        '1' => ['showitem' => 'hidden,id,mode,firstname,lastname,position,value,club,club_before_first_matchday,points,points_matchdays,season,league,efficiency'],
+        '1' => ['showitem' => 'hidden,id,mode,firstname,lastname,position,value,club,club_before_first_matchday,points,points_matchdays,season,league'],
     ],
     'palettes' => [
-        '1' => ['showitem' => 'id,mode,firstname,lastname,position,value,club,club_before_first_matchday,points,points_matchdays,season,league,efficiency'],
+        '1' => ['showitem' => 'id,mode,firstname,lastname,position,value,club,club_before_first_matchday,points,points_matchdays,season,league'],
     ],
     'columns' => [
         'hidden' => [
@@ -186,15 +186,6 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,int'
-            ]
-        ],
-        'efficiency' => [
-            'exclude' => 0,
-            'label' => 'Effizienz',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,double'
             ]
         ],
     ],

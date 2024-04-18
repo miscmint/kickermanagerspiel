@@ -15,8 +15,7 @@ CREATE TABLE tx_kickermanagerspiel_domain_model_player (
     points int(4) DEFAULT 0 NOT NULL,
     points_matchdays text,
     season int(4) DEFAULT 0 NOT NULL,
-    league int(4) DEFAULT 0 NOT NULL,
-    efficiency float DEFAULT 0 NULL
+    league int(4) DEFAULT 0 NOT NULL
 );
 
 CREATE TABLE tx_kickermanagerspiel_domain_model_lastimport (
