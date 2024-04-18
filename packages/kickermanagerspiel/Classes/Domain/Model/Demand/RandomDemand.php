@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Simon\Kickermanagerspiel\Domain\Model\Demand;
 
+use Simon\Kickermanagerspiel\Domain\Model\Player;
+use Simon\Kickermanagerspiel\Domain\Repository\PlayerRepository;
+use Simon\Kickermanagerspiel\Helper\Usort;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class RandomDemand extends AbstractEntity
@@ -376,5 +380,166 @@ class RandomDemand extends AbstractEntity
     public function getMaxNumberOfAttempts(): int
     {
         return RandomDemand::MAXNUMBEROFATTEMPTS;
+    }
+
+    /**
+     * @return array
+     */
+    public function createRandomTeam(): array
+    {
+        $players = $this->gatherAllSelectablePlayers();
+        $leanArray = $this->createLeanPlayerArray($players);
+        $teamNumbers = $this->getTeamNumbers();
+        $moneyRange = $this->getMoneyRange();
+        $clubConstraint = $this->getPlayersPerClub();
+        $maxAttempts = $this->getMaxNumberOfAttempts();
+
+        for ($i = 0; $i < $maxAttempts; $i++) {
+            $team = [
+                'goalkeeper' => ($teamNumbers['goalkeeper'] < 1) ? [] : array_rand($players['goalkeeper'], $teamNumbers['goalkeeper']),
+                'defender' => ($teamNumbers['defender'] < 1) ? [] : array_rand($players['defender'], $teamNumbers['defender']),
+                'midfielder' => ($teamNumbers['midfielder'] < 1) ? [] : array_rand($players['midfielder'], $teamNumbers['midfielder']),
+                'forward' => ($teamNumbers['forward'] < 1) ? [] : array_rand($players['forward'], $teamNumbers['forward']),
+            ];
+            foreach ($team as $key => $playersInTheirPosition) {
+                if (!is_array($playersInTheirPosition)) {
+                    $team[$key] = [0 => $playersInTheirPosition];
+                }
+            }
+
+            $teamValue = 0;
+            foreach ($team as $key => $playersInTheirPosition) {
+                foreach ($playersInTheirPosition as $playerKey) {
+                    $teamValue += $leanArray[$key][$playerKey];
+                }
+            }
+
+            // if the money spent is in the allowed range
+            if ($teamValue <= $moneyRange[1] && $teamValue >= $moneyRange[0]) {
+                $teamValue = $teamValue + $this->getNrOfCheapPlayers() * $this->getPriceCheapPlayer();
+                $chosenTeam = [
+                    'goalkeeper' => [],
+                    'defender' => [],
+                    'midfielder' => [],
+                    'forward' => [],
+                ];
+                $clubs = [];
+                foreach ($team as $key => $playersInTheirPosition) {
+                    foreach ($playersInTheirPosition as $playerKey) {
+                        /** Player */
+                        $player = $players[$key][$playerKey];
+                        $chosenTeam[$key][] = $player;
+                        if (empty($clubs[$player->getClub()->getId()])) {
+                            $clubs[$player->getClub()->getId()] = 1;
+                        } else {
+                            $clubs[$player->getClub()->getId()]++;
+                        }
+                    }
+                }
+
+                // if too many players from one club: continue searching
+                if (!empty($clubConstraint)) {
+                    foreach ($clubs as $club) {
+                        if ($club > $clubConstraint) {
+                            continue 2;
+                        }
+                    }
+                    return [$this->addCheapPlayersAndPlaceholdersToTeam($chosenTeam), $teamValue ?? 0];
+                }
+            }
+        }
+        return [$this->addCheapPlayersAndPlaceholdersToTeam([]), $teamValue ?? 0];
+    }
+
+    protected function gatherAllSelectablePlayers(): array
+    {
+        $playerRepository = GeneralUtility::makeInstance(PlayerRepository::class);
+        $constraints = [
+            'season' => $this->getSeason(),
+            'league' => $this->getLeague(),
+            'mode' => $this->getMode() !== 'custom' ? $this->getMode() : $this->getPointsMode(),
+        ];
+        $constraints['position'] = 'goalkeeper';
+        $players = [
+            'goalkeeper' => $playerRepository->findByConstraints($constraints),
+        ];
+        $constraints['position'] = 'defender';
+        $players['defender'] = $playerRepository->findByConstraints($constraints);
+
+        $constraints['position'] = 'midfielder';
+        $players['midfielder'] = $playerRepository->findByConstraints($constraints);
+
+        $constraints['position'] = 'forward';
+        $players['forward'] = $playerRepository->findByConstraints($constraints);
+
+        return $players;
+    }
+
+    protected function createLeanPlayerArray(array $players): array
+    {
+        $leanArray = [
+            'goalkeeper' => [],
+            'defender' => [],
+            'midfielder' => [],
+            'forward' => [],
+        ];
+        foreach ($players as $key => $playersInTheirPosition) {
+            /** @var Player $player */
+            foreach ($playersInTheirPosition as $player) {
+                $leanArray[$key][] = $player->getValue();
+            }
+        }
+        return $leanArray;
+    }
+
+    protected function addCheapPlayersAndPlaceholdersToTeam(array $team): array
+    {
+        $team['goalkeeper'] = $team['goalkeeper'] ?? [];
+        $team['defender'] = $team['defender'] ?? [];
+        $team['midfielder'] = $team['midfielder'] ?? [];
+        $team['forward'] = $team['forward'] ?? [];
+
+        // most valuable players first
+        usort($team['goalkeeper'], [Usort::class, 'comparePlayersByValue']);
+        usort($team['defender'], [Usort::class, 'comparePlayersByValue']);
+        usort($team['midfielder'], [Usort::class, 'comparePlayersByValue']);
+        usort($team['forward'], [Usort::class, 'comparePlayersByValue']);
+
+        $nrOfPlaceholders = [
+            'goalkeeper' => $this->getNumberGoalkeepers() - count($team['goalkeeper']) - $this->getNumberCheapGoalkeepers(),
+            'defender' => $this->getNumberDefenders() - count($team['defender']) - $this->getNumberCheapDefenders(),
+            'midfielder' => $this->getNumberMidfielders() - count($team['midfielder']) - $this->getNumberCheapMidfielders(),
+            'forward' => $this->getNumberForwards() - count($team['forward']) - $this->getNumberCheapForwards(),
+        ];
+        foreach ($nrOfPlaceholders as $key => $nrOfPlaceholder) {
+            for ($i = 0; $i < $nrOfPlaceholder; $i++) {
+                $placeholder = GeneralUtility::makeInstance(Player::class);
+                $team[$key][] = $placeholder;
+            }
+        }
+        $nrOfCheapPlayers = [
+            'goalkeeper' => $this->getNumberCheapGoalkeepers(),
+            'defender' => $this->getNumberCheapDefenders(),
+            'midfielder' => $this->getNumberCheapMidfielders(),
+            'forward' => $this->getNumberCheapForwards(),
+        ];
+        foreach ($nrOfCheapPlayers as $key => $nrOfPlaceholder) {
+            for ($i = 0; $i < $nrOfPlaceholder; $i++) {
+                $cheapPlayer = GeneralUtility::makeInstance(Player::class);
+                $cheapPlayer->setLastname('- Platzhalter -');
+                switch ($this->getLeague()) {
+                    case 2:
+                        $cheapPlayer->setValue(RandomDemand::PRICECHEAPPLAYER2);
+                        break;
+                    case 3:
+                        $cheapPlayer->setValue(RandomDemand::PRICECHEAPPLAYER3);
+                        break;
+                    default:
+                        $cheapPlayer->setValue(RandomDemand::PRICECHEAPPLAYER1);
+                }
+                $team[$key][] = $cheapPlayer;
+            }
+        }
+        return $team;
     }
 }
