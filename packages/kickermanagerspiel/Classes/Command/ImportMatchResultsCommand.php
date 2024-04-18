@@ -16,7 +16,7 @@ class ImportMatchResultsCommand extends Command
 {
     protected static $defaultName = 'kickermanagerspiel:import:matchresults';
 
-    const NROFMATCHDAYS = 34;
+    public const NROFMATCHDAYS = 34;
 
     protected RequestFactory $requestFactory;
     protected ConnectionPool $connectionPool;
@@ -274,8 +274,7 @@ class ImportMatchResultsCommand extends Command
         int $goalsTeam2,
         array $matchResult,
         array $players
-    ): array
-    {
+    ): array {
         $points = 0;
 
         // if team1 scored
@@ -283,7 +282,7 @@ class ImportMatchResultsCommand extends Command
             $club = $matchResult['team1'];
             $points = $this->calculateEfficiencyPointsOfGoal($goal['scoreTeam1'], $goalsTeam1, $goalsTeam2);
 
-            // if team2 scored
+        // if team2 scored
         } elseif ($scoreDifference[1] == 1) {
             $club = $matchResult['team2'];
             $points = $this->calculateEfficiencyPointsOfGoal($goal['scoreTeam2'], $goalsTeam2, $goalsTeam1);

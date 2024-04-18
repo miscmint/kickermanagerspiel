@@ -8,27 +8,27 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class RandomDemand extends AbstractEntity
 {
-    const PRICECHEAPPLAYER1 = 0.5;
-    const PRICECHEAPPLAYER2 = 0.1;
-    const PRICECHEAPPLAYER3 = 0.05;
-    const DEFAULTFORMATION = 352;
-    CONST MAXNUMBEROFATTEMPTS = 100000;
-    const CLASSICMONEY1 = 30;
-    const CLASSICMONEY2 = 7.5;
-    const CLASSICMONEY3 = 4;
-    const CLASSICGOALKEEPERS = 2;
-    const CLASSICDEFENDERS = 4;
-    const CLASSICMIDFIELDERS = 6;
-    const CLASSICFORWARDS = 3;
-    const CLASSICPLAYERSPERCLUB = 3;
-    const INTERACTIVEMONEY1 = 42.5;
-    const INTERACTIVEMONEY2 = 10;
-    const INTERACTIVEMONEY3 = 6;
-    const INTERACTIVEGOALKEEPERS = 3;
-    const INTERACTIVEDEFENDERS = 6;
-    const INTERACTIVEMIDFIELDERS = 8;
-    const INTERACTIVEFORWARDS = 5;
-    const INTERACTIVEPLAYERSPERCLUB = 99;
+    public const PRICECHEAPPLAYER1 = 0.5;
+    public const PRICECHEAPPLAYER2 = 0.1;
+    public const PRICECHEAPPLAYER3 = 0.05;
+    public const DEFAULTFORMATION = 352;
+    public const MAXNUMBEROFATTEMPTS = 100000;
+    public const CLASSICMONEY1 = 30;
+    public const CLASSICMONEY2 = 7.5;
+    public const CLASSICMONEY3 = 4;
+    public const CLASSICGOALKEEPERS = 2;
+    public const CLASSICDEFENDERS = 4;
+    public const CLASSICMIDFIELDERS = 6;
+    public const CLASSICFORWARDS = 3;
+    public const CLASSICPLAYERSPERCLUB = 3;
+    public const INTERACTIVEMONEY1 = 42.5;
+    public const INTERACTIVEMONEY2 = 10;
+    public const INTERACTIVEMONEY3 = 6;
+    public const INTERACTIVEGOALKEEPERS = 3;
+    public const INTERACTIVEDEFENDERS = 6;
+    public const INTERACTIVEMIDFIELDERS = 8;
+    public const INTERACTIVEFORWARDS = 5;
+    public const INTERACTIVEPLAYERSPERCLUB = 99;
 
     protected ?int $season = null;
     protected ?int $league = 1;

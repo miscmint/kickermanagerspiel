@@ -8,8 +8,8 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class EffifuDemand extends AbstractEntity
 {
-    const MODE = 'classic';
-    const ITEMSPERPAGE = 10;
+    public const MODE = 'classic';
+    public const ITEMSPERPAGE = 10;
 
     protected ?int $season = null;
     protected ?int $league = 1;

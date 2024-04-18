@@ -1,4 +1,5 @@
 <?php
+
 namespace Simon\Kickermanagerspiel\Helper;
 
 use Simon\Kickermanagerspiel\Domain\Model\Player;
