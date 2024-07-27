@@ -133,8 +133,8 @@
   }
 }
 
-/* Stuttgart */
-.club-16 {
+/* VfB Stuttgart (II) */
+.club-16, .club-58 {
   color: #e32219;
   background-color: #fff;
   .info {
@@ -241,8 +241,8 @@
   }
 }
 
-/* Hannover */
-.club-28 {
+/* Hannover (II) */
+.club-28, .club-57 {
   color: #000;
   background-color: #179d33;
   .info {
@@ -481,5 +481,23 @@
   background-color: #e2001a;
   .info {
     border-top: 1px solid #004d9a;
+  }
+}
+
+/* Alemannia Aachen */
+.club-59 {
+  color: #000;
+  background-color: #ffde00;
+  .info {
+    border-top: 1px solid #000;
+  }
+}
+
+/* Energie Cottbus */
+.club-60 {
+  color: #fff;
+  background-color: #f9001c;
+  .info {
+    border-top: 1px solid #edff16;
   }
 }

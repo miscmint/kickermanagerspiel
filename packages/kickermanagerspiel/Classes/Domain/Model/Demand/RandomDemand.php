@@ -12,27 +12,27 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class RandomDemand extends AbstractEntity
 {
-    public const PRICECHEAPPLAYER1 = 0.5;
-    public const PRICECHEAPPLAYER2 = 0.1;
-    public const PRICECHEAPPLAYER3 = 0.05;
-    public const DEFAULTFORMATION = 352;
-    public const MAXNUMBEROFATTEMPTS = 100000;
-    public const CLASSICMONEY1 = 30;
-    public const CLASSICMONEY2 = 7.5;
-    public const CLASSICMONEY3 = 4;
-    public const CLASSICGOALKEEPERS = 2;
-    public const CLASSICDEFENDERS = 4;
-    public const CLASSICMIDFIELDERS = 6;
-    public const CLASSICFORWARDS = 3;
-    public const CLASSICPLAYERSPERCLUB = 3;
-    public const INTERACTIVEMONEY1 = 42.5;
-    public const INTERACTIVEMONEY2 = 10;
-    public const INTERACTIVEMONEY3 = 6;
-    public const INTERACTIVEGOALKEEPERS = 3;
-    public const INTERACTIVEDEFENDERS = 6;
-    public const INTERACTIVEMIDFIELDERS = 8;
-    public const INTERACTIVEFORWARDS = 5;
-    public const INTERACTIVEPLAYERSPERCLUB = 99;
+    public const float PRICECHEAPPLAYER1 = 0.5;
+    public const float PRICECHEAPPLAYER2 = 0.1;
+    public const float PRICECHEAPPLAYER3 = 0.05;
+    public const int DEFAULTFORMATION = 442;
+    public const int MAXNUMBEROFATTEMPTS = 100000;
+    public const float CLASSICMONEY1 = 30;
+    public const float CLASSICMONEY2 = 7.5;
+    public const float CLASSICMONEY3 = 4;
+    public const int CLASSICGOALKEEPERS = 2;
+    public const int CLASSICDEFENDERS = 5;
+    public const int CLASSICMIDFIELDERS = 5;
+    public const int CLASSICFORWARDS = 3;
+    public const int CLASSICPLAYERSPERCLUB = 3;
+    public const float INTERACTIVEMONEY1 = 42.5;
+    public const float INTERACTIVEMONEY2 = 10;
+    public const float INTERACTIVEMONEY3 = 6;
+    public const int INTERACTIVEGOALKEEPERS = 3;
+    public const int INTERACTIVEDEFENDERS = 7;
+    public const int INTERACTIVEMIDFIELDERS = 7;
+    public const int INTERACTIVEFORWARDS = 5;
+    public const int INTERACTIVEPLAYERSPERCLUB = 99;
 
     protected ?int $season = null;
     protected ?int $league = 1;

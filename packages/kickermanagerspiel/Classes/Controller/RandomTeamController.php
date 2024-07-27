@@ -15,7 +15,6 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class RandomTeamController extends ActionController
 {
     protected PlayerRepository $playerRepository;
-    protected array $args = [];
     protected float $teamValue = 0;
 
     /**

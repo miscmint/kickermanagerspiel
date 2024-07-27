@@ -1,7 +1,7 @@
-base: 'https://kickermanagerspiel.82.pc/'
+base: 'https://kms13.83.pc/'
 baseVariants:
   -
-    base: 'https://kickermanagerspiel.82.pc/'
+    base: 'https://kms13.83.pc/'
     condition: 'applicationContext == "Development/dsimon"'
 languages:
   -

@@ -12,7 +12,7 @@ return [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8mb4',
-                'dbname' => 'kickermanagerspiel',
+                'dbname' => 'kms13',
                 'driver' => 'mysqli',
                 'host' => 'localhost',
                 'tableoptions' => [
@@ -40,6 +40,10 @@ return [
         'kickermanagerspiel' => [
             'folder' => '2',
         ],
+        'redirects' => [
+            'showCheckIntegrityInfoInReports' => '1',
+            'showCheckIntegrityInfoInReportsSeconds' => '86400',
+        ],
     ],
     'FE' => [
         'debug' => true,
@@ -50,8 +54,6 @@ return [
     ],
     'GFX' => [
         'processor' => 'GraphicsMagick',
-        'processor_allowTemporaryMasksAsPng' => false,
-        'processor_colorspace' => 'RGB',
         'processor_effects' => false,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',

@@ -5,7 +5,7 @@
 		"optimize-autoloader": true,
 		"sort-packages": true,
 		"platform": {
-			"php": "8.2.10"
+			"php": "8.3.9"
 		},
 		"allow-plugins": {
 			"typo3/cms-composer-installers": true,
@@ -20,38 +20,37 @@
 	"license": "GPL-2.0-or-later",
 
 	"require": {
-		"php": "8.2.*",
-		"b13/http2": "^2.0",
+		"php": "8.3.*",
 		"simon/kickermanagerspiel": "@dev",
-		"typo3/cms-backend": "12.4.*",
-		"typo3/cms-belog": "12.4.*",
-		"typo3/cms-beuser": "12.4.*",
+		"typo3/cms-backend": "13.2.*",
+		"typo3/cms-belog": "13.2.*",
+		"typo3/cms-beuser": "13.2.*",
 		"typo3/cms-composer-installers": "5.*",
-		"typo3/cms-core": "12.4.*",
-		"typo3/cms-extbase": "12.4.*",
-		"typo3/cms-extensionmanager": "12.4.*",
-		"typo3/cms-felogin": "12.4.*",
-		"typo3/cms-filelist": "12.4.*",
-		"typo3/cms-fluid": "12.4.*",
-		"typo3/cms-fluid-styled-content": "12.4.*",
-		"typo3/cms-form": "12.4.*",
-		"typo3/cms-frontend": "12.4.*",
-		"typo3/cms-info": "12.4.*",
-		"typo3/cms-install": "12.4.*",
-		"typo3/cms-redirects": "12.4.*",
-		"typo3/cms-rte-ckeditor": "12.4.*",
-		"typo3/cms-seo": "12.4.*",
-		"typo3/cms-setup": "12.4.*",
-		"typo3/cms-sys-note": "12.4.*",
-		"typo3/cms-t3editor": "12.4.*",
-		"typo3/cms-tstemplate": "12.4.*",
-		"typo3/cms-viewpage": "12.4.*"
+		"typo3/cms-core": "13.2.*",
+		"typo3/cms-extbase": "13.2.*",
+		"typo3/cms-extensionmanager": "13.2.*",
+		"typo3/cms-felogin": "13.2.*",
+		"typo3/cms-filelist": "13.2.*",
+		"typo3/cms-fluid": "13.2.*",
+		"typo3/cms-fluid-styled-content": "13.2.*",
+		"typo3/cms-form": "13.2.*",
+		"typo3/cms-frontend": "13.2.*",
+		"typo3/cms-info": "13.2.*",
+		"typo3/cms-install": "13.2.*",
+		"typo3/cms-redirects": "13.2.*",
+		"typo3/cms-rte-ckeditor": "13.2.*",
+		"typo3/cms-seo": "13.2.*",
+		"typo3/cms-setup": "13.2.*",
+		"typo3/cms-sys-note": "13.2.*",
+		"typo3/cms-t3editor": "13.2.*",
+		"typo3/cms-tstemplate": "13.2.*",
+		"typo3/cms-viewpage": "13.2.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*",
-		"typo3/cms-adminpanel": "12.4.*",
-		"typo3/cms-lowlevel": "12.4.*",
-		"typo3/coding-standards": "^0.5.3"
+		"typo3/cms-adminpanel": "13.2.*",
+		"typo3/cms-lowlevel": "13.2.*",
+		"typo3/coding-standards": "^0.8"
 	},
 	"extra": {
 		"typo3/cms": {

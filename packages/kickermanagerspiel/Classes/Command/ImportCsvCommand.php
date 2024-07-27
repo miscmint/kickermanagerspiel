@@ -16,15 +16,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ImportCsvCommand extends Command
 {
-    protected static $defaultName = 'kickermanagerspiel:import:csv';
-
     protected array $csvFiles = [
         'interactive_1_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00012023.csv',
         'interactive_2_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00022023.csv',
         'interactive_3_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00032023.csv',
         'classic_1_2023' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00012023.csv',
-        'classic_2_2023' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00022023.csv',
-        'classic_3_2023' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00032023.csv',
+        'classic_2_2024' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00022024.csv',
+        'classic_3_2024' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00032024.csv',
     ];
 
     protected int $folder = 0;
@@ -175,7 +173,7 @@ class ImportCsvCommand extends Command
                 'position' => strtolower($data[6]),
                 'value' => $this->setValueInMillion((float)$data[7]),
                 'club' => $this->setClub($data[5]),
-                'points' => strtolower($data[8]),
+                'points' => ($currentImport['matchday'] == 0) ? 0 : strtolower($data[8]),
                 'season' => (int)$keyArray[2],
                 'league' => (int)$keyArray[1]
             ];
@@ -238,7 +236,11 @@ class ImportCsvCommand extends Command
         $points = $player['points'];
         $pointsThisMatchday = $points - $pointsBefore;
         $pointsMatchdays[$currentImport['matchday']] = $pointsThisMatchday;
-        $player['points_matchdays'] = json_encode($pointsMatchdays);
+        if ($currentImport['matchday'] != 0) {
+            $player['points_matchdays'] = json_encode($pointsMatchdays);
+        } else {
+            $player['points_matchdays'] = '';
+        }
         $this->connectionPool->getConnectionForTable('tx_kickermanagerspiel_domain_model_player')
             ->update(
                 'tx_kickermanagerspiel_domain_model_player',
@@ -252,7 +254,11 @@ class ImportCsvCommand extends Command
         $player['pid'] = $this->folder;
         $player['crdate'] = time();
         $player['tstamp'] = time();
-        $player['points_matchdays'] = json_encode([$currentImport['matchday'] => $player['points']]);
+        if ($currentImport['matchday'] != 0) {
+            $player['points_matchdays'] = json_encode([$currentImport['matchday'] => $player['points']]);
+        } else {
+            $player['points_matchdays'] = '';
+        }
         $this->connectionPool->getConnectionForTable('tx_kickermanagerspiel_domain_model_player')
             ->insert(
                 'tx_kickermanagerspiel_domain_model_player',

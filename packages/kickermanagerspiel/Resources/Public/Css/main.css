@@ -1597,12 +1597,12 @@ form .submit-button:hover {
   border-top: 1px solid #fff;
 }
 
-/* Stuttgart */
-.club-16 {
+/* VfB Stuttgart (II) */
+.club-16, .club-58 {
   color: #e32219;
   background-color: #fff;
 }
-.club-16 .info {
+.club-16 .info, .club-58 .info {
   border-top: 1px solid #e32219;
 }
 
@@ -1705,12 +1705,12 @@ form .submit-button:hover {
   border-top: 1px solid #fff;
 }
 
-/* Hannover */
-.club-28 {
+/* Hannover (II) */
+.club-28, .club-57 {
   color: #000;
   background-color: #179d33;
 }
-.club-28 .info {
+.club-28 .info, .club-57 .info {
   border-top: 1px solid #000;
 }
 
@@ -1946,6 +1946,24 @@ form .submit-button:hover {
 }
 .club-56 .info {
   border-top: 1px solid #004d9a;
+}
+
+/* Alemannia Aachen */
+.club-59 {
+  color: #000;
+  background-color: #ffde00;
+}
+.club-59 .info {
+  border-top: 1px solid #000;
+}
+
+/* Energie Cottbus */
+.club-60 {
+  color: #fff;
+  background-color: #f9001c;
+}
+.club-60 .info {
+  border-top: 1px solid #edff16;
 }
 
 .no-team-found {
