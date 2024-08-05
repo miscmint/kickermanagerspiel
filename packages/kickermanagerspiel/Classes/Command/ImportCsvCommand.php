@@ -309,7 +309,21 @@ class ImportCsvCommand extends AbstractCommand
 
         // check if enough has changed to be a new match day
         if ($this->majorChanges($contentsArray, $lastImport)) {
-            $currentImport['matchday'] = (!empty($lastImport['matchday'])) ? $lastImport['matchday'] + 1 : 0;
+            if (!empty($lastImport['matchday'])) {
+                $currentImport['matchday'] = $lastImport['matchday'] + 1;
+            } else {
+                $maxPoints = 0;
+                foreach ($contentsArray as $item) {
+                    $data = str_getcsv($item, ';');
+                    $maxPoints = max((int)$maxPoints, (int)($data[8] ?? 0));
+                }
+                // if players have many points it's the points from last season => match day 0
+                if ($maxPoints > 100) {
+                    $currentImport['matchday'] = 0;
+                } else {
+                    $currentImport['matchday'] = 1;
+                }
+            }
         } else {
             $currentImport['matchday'] = $lastImport['matchday'];
         }
