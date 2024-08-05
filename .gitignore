@@ -14,3 +14,7 @@ generateProjectIml.php
 .composercache
 /.sass-cache
 .sass-cache/
+_CsvDateien
+Java
+!phpstan.neon
+phpstan.txt

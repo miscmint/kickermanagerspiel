@@ -33,7 +33,7 @@ class PlayerRepository extends Repository
                 case 'season':
                     $season = $player->getSeason();
                     if (empty($values[$season])) {
-                        $seasonNextYear = (int)substr($season, 2) + 1;
+                        $seasonNextYear = (int)substr((string)$season, 2) + 1;
                         $seasonValue = $season . '/' . $seasonNextYear;
                         $values[$season] = $seasonValue;
                     }

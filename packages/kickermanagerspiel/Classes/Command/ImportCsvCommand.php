@@ -3,31 +3,17 @@
 namespace Simon\Kickermanagerspiel\Command;
 
 use Doctrine\DBAL\Exception;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class ImportCsvCommand extends Command
+class ImportCsvCommand extends AbstractCommand
 {
-    protected array $csvFiles = [
-        'interactive_1_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00012023.csv',
-        'interactive_2_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00022023.csv',
-        'interactive_3_2023' => 'https://www.kicker-libero.de/api/sportsdata/v1/players-details/se-k00032023.csv',
-        'classic_1_2023' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00012023.csv',
-        'classic_2_2024' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00022024.csv',
-        'classic_3_2024' => 'https://classic.kicker-libero.de/api/sportsdata/v1/players-details/se-k00032024.csv',
-    ];
-
-    protected int $folder = 0;
-
-    protected ConnectionPool $connectionPool;
     protected RequestFactory $requestFactory;
 
     public function configure(): void
@@ -42,10 +28,7 @@ class ImportCsvCommand extends Command
     public function __construct(string $name = null)
     {
         parent::__construct($name);
-        $this->connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $this->requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
-        $extConfig =  GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('kickermanagerspiel');
-        $this->folder = $extConfig['folder'];
     }
 
     /**
@@ -107,7 +90,7 @@ class ImportCsvCommand extends Command
         }
         foreach ($contentsArray as $currentRecord) {
             $currentRecordArray = explode(';', $currentRecord);
-            if (empty($currentRecordArray) || empty($currentRecordArray[0]) || count($currentRecordArray) == 1) {
+            if (empty($currentRecordArray[0]) || count($currentRecordArray) == 1) {
                 continue;
             }
             $id = $currentRecordArray[0];
@@ -155,9 +138,13 @@ class ImportCsvCommand extends Command
 
         $currentImport = $this->createNewLastImport($lastImport, $hash, $json, $contentsArray, $key);
 
+        $keyArray = explode('_', $key);
+        $this->saveCsvFile($csvFile, $currentImport, $keyArray);
+
         $progressBar = new ProgressBar($output, count($contentsArray));
 
-        $keyArray = explode('_', $key);
+        $this->deletePlayersIfMatchdayEqualsZero((int)$currentImport['matchday'], $keyArray);
+
         foreach ($contentsArray as $item) {
             $data = str_getcsv($item, ';');
             if (empty($data[1]) || $data[1] == 'Vorname') {
@@ -365,5 +352,45 @@ class ImportCsvCommand extends Command
     protected function setValueInMillion(float $value): float
     {
         return $value / 1000000;
+    }
+
+    /**
+     * @param int $matchday
+     * @param array $keyArray
+     * @return void
+     */
+    protected function deletePlayersIfMatchdayEqualsZero(int $matchday, array $keyArray): void
+    {
+        if ($matchday == 0) {
+            $queryBuilder = $this->connectionPool->getQueryBuilderForTable('tx_kickermanagerspiel_domain_model_player');
+            $queryBuilder->delete('tx_kickermanagerspiel_domain_model_player')
+                ->where(
+                    $queryBuilder->expr()->eq('mode', $queryBuilder->createNamedParameter((string)$keyArray[0])),
+                    $queryBuilder->expr()->eq('season', $queryBuilder->createNamedParameter((string)$keyArray[2])),
+                    $queryBuilder->expr()->eq('league', $queryBuilder->createNamedParameter((string)$keyArray[1])),
+                );
+            $queryBuilder->executeStatement();
+        }
+    }
+
+    protected function saveCsvFile(string $filePath, array $currentImport, array $keyArray): void
+    {
+        $newFileName = time() . '.csv';
+        $newFilePathParts = [
+            Environment::getProjectPath() . '/_CsvDateien/' . $keyArray[2] . '/',
+            '/matchday' . $currentImport['matchday'] . '/',
+            '/liga' . $keyArray[1] . '/',
+            $keyArray[0] . '/'
+        ];
+        $path = '';
+        foreach ($newFilePathParts as $pathPart) {
+            $path .= $pathPart;
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+        }
+
+        $fileContents = file_get_contents($filePath);
+        file_put_contents($path . '/' . $newFileName, print_r($fileContents, true));
     }
 }

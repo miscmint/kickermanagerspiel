@@ -24,3 +24,11 @@ CREATE TABLE tx_kickermanagerspiel_domain_model_lastimport (
     content text,
     arraykey varchar(64) DEFAULT '' NOT NULL
 );
+
+CREATE TABLE tx_kickermanagerspiel_domain_model_perfectteam (
+    matchday int(4) DEFAULT 0 NOT NULL,
+    season int(4) DEFAULT 0 NOT NULL,
+    league int(4) DEFAULT 0 NOT NULL,
+    players text,
+    only_matchday int(4) DEFAULT 0 NOT NULL
+);

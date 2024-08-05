@@ -12,3 +12,8 @@ services:
       - name: 'console.command'
         command: 'kickermanagerspiel:import:csv'
         description: 'Import CSVs from kicker.de'
+  Simon\Kickermanagerspiel\Command\CreatePerfectTeamCommand:
+    tags:
+      - name: 'console.command'
+        command: 'kickermanagerspiel:create:perfectteam'
+        description: 'Create perfect team'

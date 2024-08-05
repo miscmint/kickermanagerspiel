@@ -48,6 +48,7 @@
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*",
+		"saschaegerer/phpstan-typo3": "^1.8",
 		"typo3/cms-adminpanel": "13.2.*",
 		"typo3/cms-lowlevel": "13.2.*",
 		"typo3/coding-standards": "^0.8"
@@ -96,7 +97,14 @@
 		"csfixer": "@php vendor/bin/php-cs-fixer fix packages",
 		"minifyjs": [
 			"cd packages/kickermanagerspiel/Resources/Public/JavaScript && for file in `pwd`/*.js; do terser $file -m -c > `basename $file .js`.min.js; done && rm *.min.min.js || true"
-		]
+		],
+		"csvimport": [
+			"mariadb-dump -utransfer kms13 > _CsvDateien/dumps/kms_beforeImport.sql",
+			"@php vendor/bin/typo3 kickermanagerspiel:import:csv",
+			"mariadb-dump -utransfer kms13 > _CsvDateien/dumps/kms_afterImport.sql",
+			"diff -Naur ./_CsvDateien/dumps/kms_beforeImport.sql ./_CsvDateien/dumps/kms_afterImport.sql > ./_CsvDateien/dumps/sql_diff.txt"
+		],
+		"phpstan": "@php vendor/bin/phpstan analyse -c phpstan.neon > phpstan.txt"
 	}
 
 }
